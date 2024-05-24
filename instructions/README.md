@@ -1,17 +1,28 @@
 # Domain Name Information - Instructions
+The internet is made up of a series of protocols, one of the most notable protocols being the "Internet Protocol". This is the protocol that allows computers to communicate with each other over the internet. These are numbers often seen as 129.47.21.1 (as an example). However, the internet is not just a series of numbers, it is also a series of names. These names are called domain names. Domain names are human-readable names that are used to identify a website. For example, the domain name for Northeastern University is "northeastern.edu". To connect names to numbers, the internet uses a series of servers called Domain Name Servers (DNS). These servers are responsible for translating domain names into IP addresses, and combined with other servers that help with routing, allow you to connect to the website you want to visit.
+
+For this assignment, we will explore keeping our own file of domain names and their associated IP addresses. This file will not only contain the domain name and IP address, but also the location of the server that sent the request. It is worth noting the web is a bit more complicated than this, as often a website like Northeastern, may have multiple servers throughout the world. This is done to help with speed and reliability. However, for our purposes, we will just assume one server and one location for our files. 
 
 
 
 ## Learning Objectives
-* Designing with inheritance and polymorphism in java
 * Practicing Test Driven Development
 * Implementing junit tests for all methods
-* Making use of java collections/lists
-* Making use of equality and sorting (especially sorting)
-* Explore the use of streams in Java
+* Writing out in different file formats (CSV, JSON, XML, TXT)
+* "Serializing" and "Deserializing" data (converting data to a file format and back)
+* Using third party libraries to assist in serialization/deserialization (Jackson and/or Open CSV)
+* Exploring network connections in java and using them to connect to a server
 
 
 ## Instructions
+
+
+
+### Command Line Argument Options
+
+
+### What we provided!
+
 
 > [!TIP]
 > We have included a sample completed program you can try out. No promise that it is
