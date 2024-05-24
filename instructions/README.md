@@ -81,6 +81,8 @@ We have provided a number of files for you. You DO NOT have to use any of the fi
 * `formatters/DataFormatter.java` - A class we used to help us format the data based on the provided format. Assumes a collection of DNRecords. We provided the 'pretty print' option, so you didn't have to worry about spacing or spelling with the autograder. You do not have to use this file, but make sure you follow the example pretty print format provided. You will want to look at `test/TestJacksonSerialize.java` to see how to use the Jackson library to serialize and deserialize data.
 
 
+> [!CAUTION]
+> These are not all the files we used! Don't be fooled thinking it is complete. We had files to help us especially in the model including the main model file, along with a java bean for loading data from online and more. Really think about design, and if you want to even use what we provided, but no matter what you will be adding files!  This assignment is intentionally open for your design, we just wanted to give you a jump start on some of the tougher topics that involved working with other libraries and network connections.
 
 ### :fire: Task 1: Design 
 
