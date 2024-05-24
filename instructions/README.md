@@ -42,10 +42,10 @@ In addition to displaying the data to the stdout, you will also need to be able 
 The program should be able to take in the following command line arguments in any order. 
 
 * `-h` or `--help` - Display the help menu and end the program, we have provided this menu for you in the `ArgsController.java` file.
-* `-f` - The format to write out to. The options are `pretty`, `csv`, `json`, `xml`. If this is not provided, you should default to pretty.
-* `-o` - The output file to write to. If this is not provided, you should write to `stdout` (System.out).
+* `-f format` - The format to write out to. The options are `pretty`, `csv`, `json`, `xml`. If this is not provided, you should default to pretty.
+* `-o file | stdout` - The output file to write to. If this is not provided, you should write to `stdout` (System.out).
 * `--data` - This sets the 'database' file to read from. If it is not provided, it is `data/hostrecords.xml`.  
-* hostname | all - it assumes anything that doesn't have one of the above options is a hostname - just the first one that shows up. If `all` is typed in, it displays all contents of the file. If hostname is omitted it will display all contents of the file. 
+* `hostname | all` - it assumes anything that doesn't have one of the above options is a hostname - just the first one that shows up. If `all` is typed in, it displays all contents of the file. If hostname is omitted it will display all contents of the file.  The hostname is a part of the url, such as www.google.com or www.github.com or even google.com or github.com - though it is fine to treat www.google.com and google.com as separate entries in your file. 
 
 You should try these command line arguments with the sample application provided, so you can get a better understanding of what should be displayed. 
 
@@ -82,14 +82,14 @@ We have provided a number of files for you. You DO NOT have to use any of the fi
 
 
 > [!CAUTION]
-> These are not all the files we used! Don't be fooled thinking it is complete. We had files to help us especially in the model including the main model file, along with a java bean for loading data from online and more. Really think about design, and if you want to even use what we provided, but no matter what you will be adding files!  This assignment is intentionally open for your design, we just wanted to give you a jump start on some of the tougher topics that involved working with other libraries and network connections.
+> These are not all the files we used! Don't be fooled thinking it is complete. We had files to help us especially in the model including the main model file, along with a java bean for loading data from online and more. Really think about design, and if you want to even use what we provided, but no matter what you will be adding files!  This assignment is intentionally open for your design. We just wanted to give you a jump start on some of the tougher topics that involved working with other libraries and network connections.
 
 ### :fire: Task 1: Design 
 
 Before you start writing, it is important to think about design. You DO NOT have to be perfect in your design, so we will come back to this step a few times. 
 
 1. First, become a detective and read through the files provided. Take notes on what you are seeing.  This is a common skill in software engineering, and you will need to do this often as you work with other people's code. [Report.md](../Report.md) has specific questions on the code that may help you. 
-2. Go to [DesignDocument.md](../DesignDocument.md) and fill out (ONLY) the initial design sections. We have broken them up into sections to help you think about the design in smaller parts.
+2. Go to [DesignDocument.md](../DesignDocument.md) and fill out (ONLY) the initial design sections. 
 
 > [!TIP]
 > You are free  to use mermaid or any other UML tools you want, just make sure if you are using another UML tool, you properly link the image in the markdown file. See the resources page, for a list of [UML tools](https://github.com/CS5004-khoury-lionelle/Resources?tab=readme-ov-file#uml-design-tools).
@@ -111,7 +111,29 @@ Note: you often don't know all the tests as you write. As such, it is alright to
 > Make sure to commit as you development. The bare minimum commits would be after every test, but you probably will have additional commits especially at the beginning. 
 
 #### :raising_hand: Implementation Tips
-
+* Testing - you when it comes to testing the main, remember you can call it directly from your test. You can also use `System.setOut` to capture the output to test it.
+  * ```java
+    ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    OutputStream originalOut = System.out; // just so you don't loose it
+    System.setOut(new PrintStream(outContent));
+    // Call your method that involve printing
+    System.setOut(originalOut); // reset the output
+    assertEquals("Your expected output", outContent.toString());
+    ```
+* It is also alright to remove spaces when testing/formatting. We do that same in our autograder, and while testing spaces exactly is important in some cases, it is not in this case.
+* Make sure to run the tests we provide and play with them. This is an example of using tests to help you understand how third party libraries work before integrating them into your own code. They are never the tests we wrote to make sure we were using Jackson correctly. 
+* Jackson is a really powerful library that bases a lot of what it does on annotations and reflection. This means it seems to 'just work', if you set it up correctly. Here are some resources to help you get started:
+  * https://github.com/FasterXML/jackson?tab=readme-ov-file
+  * https://github.com/FasterXML/jackson-databind
+  * https://github.com/FasterXML/jackson-dataformat-xml
+  * https://stackify.com/java-xml-jackson/
+  * https://github.com/FasterXML/jackson-dataformats-text/tree/master/csv
+  * https://cowtowncoder.medium.com/writing-csv-with-jackson-204fdb3c9dac
+  * https://stackify.com/java-xml-jackson/
+  * https://www.baeldung.com/java-pojo-class  (Just because Java Bean and POJO or "plain old java object" gets tossed around in the above links a lot)
+* Make sure to make use of polymorphism. System.out is an OutputStream, and so is FileOutputStream. You can use this to your advantage to make sure you are to use the same functions for both. 
+* Yes, most of your controller is parsing args. Once they are parsed, the code to run the program itself can be very small if you design it correctly.
+* Starting with a Java Bean, and then converting to a [record](https://docs.oracle.com/en/java/javase/17/language/records.html) is useful when loading information from the internet API. However, most information can stay as a record, as we aren't modifying information once it is in the file and loaded.
 
 
 
