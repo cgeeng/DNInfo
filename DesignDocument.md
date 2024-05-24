@@ -1,4 +1,4 @@
-# Payroll Generator Design Document
+# Domain Name Information  Design Document
 
 
 This document is meant to provide a tool for you to demonstrate the design process. You need to work on this before you code, and after have a finished product. That way you can compare the changes, and changes in design are normal as you work through a project. It is contrary to popular belief, but we are not perfect our first attempt. We need to iterate on our designs to make them better. This document is a tool to help you do that.
