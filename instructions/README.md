@@ -12,22 +12,47 @@ For this assignment, we will explore keeping our own file of domain names and th
 * "Serializing" and "Deserializing" data (converting data to a file format and back)
 * Using third party libraries to assist in serialization/deserialization (Jackson and/or Open CSV)
 * Exploring network connections in java and using them to connect to a server
+* Encapsulating data between components, making use of immutable and mutable structures were important
 
 
 ## Instructions
 
+For this assignment, while we have provided example code we have written, including files you are welcome to use - you are free to fully design this project from the ground up as long as you:
+
+* Use `DNInfoApp.java` as the main entry point of your program, and implement the argument options below. 
+
+When designing your application, you want to make sure much of what you provide is immutable or unmodifiable, except for in the actual containing class as you pass information around to different components of your program. This is a good practice in software engineering, and one of the learning objectives of this assignment.  
+
+The goal of the application is to provide Domain Name (URL) Information back to the client, based on the command line arguments provided. This information will be downloaded from the internet, and stored in a file. Once stored in a file, you do not have to update / download again (which is more common due to IP addresses shifting to balance load). As such, you are looking up the information in the file, downloading *and updating the file* if the domain name (hostname) is not found, and returning the information.  The records/local file will be kept as an XML file. 
+
+Automatically updating a local file based on information obtained online is very common to prevent both unneeded web requests, and to make sure there are local copies. Most DNS servers and routing tables work in a similar way, though they are more complex and have mechanisms to continually update as locations change. To get information about the hostname, we are using a combination of built in java libraries and the [ipapi.co](https://ipapi.co/api/?java#introduction) API. This API is free to use up to a certain number of requests (1000 / day, 30,000 / month), so for use in this class you should be fine being in the free tier.  
+
+### Display Formats
+
+For displaying the information to the client, you will have to display it based on different formats provided, namely, the data can be displayed in a pretty print format (provided), or in a CSV, JSON, or XML format. For the JSON format, you should use the [Jackson Library](https://github.com/FasterXML/jackson?tab=readme-ov-file) to serialize and deserialize the data. For CSV, you can use the [Open CSV](https://opencsv.sourceforge.net/) library, Jackson, or write it using standard java (none of the data has commas in it, so simple formatting is fine). For XML, you can use Jackson, or write it out using the built in java libraries. We have already included the updates to your build.gradle, so the libraries are included. If you are curious, they are in the dependencies section of the [build.gradle](../build.gradle) file.
+
+In addition to displaying the data to the stdout, you will also need to be able to write the data to a provided file. 
+
+> [!NOTE]
+> What does serialize / deserialize mean? It is a fancy way of saying "convert to a file format" and "convert from a file format". This is a common term in software engineering, and you will see it often. The file format can often be a binary file, but in this case we are using human readable text file formats. Often it is used when the class fields are bound to specific data in the output, so they can be easily converted back and forth.  
 
 
 ### Command Line Argument Options
 
+The program should be able to take in the following command line arguments in any order. 
 
-### What we provided!
+* `-h` or `--help` - Display the help menu and end the program, we have provided this menu for you in the `ArgsController.java` file.
+* `-f` - The format to write out to. The options are `pretty`, `csv`, `json`, `xml`. If this is not provided, you should default to pretty.
+* `-o` - The output file to write to. If this is not provided, you should write to `stdout` (System.out).
+* `--data` - This sets the 'database' file to read from. If it is not provided, it is `data/hostrecords.xml`.  
+* hostname | all - it assumes anything that doesn't have one of the above options is a hostname - just the first one that shows up. If `all` is typed in, it displays all contents of the file. If hostname is omitted it will display all contents of the file. 
 
+You should try these command line arguments with the sample application provided, so you can get a better understanding of what should be displayed. 
 
 > [!TIP]
 > We have included a sample completed program you can try out. No promise that it is
 > 100% bullet proof, and probably some typos, but you can get the idea
-> of how the final program works. If you go into the sample_working directory, you can run the program with the following command:
+> of how the final program works. If you go into the sample_working directory using your terminal, you can run the program with the following command:
 > ```console
 > bin/DNInfo
 >    or if windows
@@ -40,6 +65,20 @@ For this assignment, we will explore keeping our own file of domain names and th
 > ```
 > bin/DNInfo -h  
 > ```
+
+
+
+### What we provided
+
+We have provided a number of files for you. You DO NOT have to use any of the files except for `DNInfoApp` as your starting point. You do not have to design it the same way. We just left some of our packages there to help you get started/get hints. With that said, there are definitely some components you will want to work with, and we encourage you running/modifying the couple test files provided to get a better understanding of the jackson library, along with the network utilities we provided. 
+
+* `DNInfoApp.java` - The main entry point of your program. You need to keep this file, and start here for your program
+* `controller/ArgsController.java` - A class to help you parse the command line arguments. We provided it, so you can have a premade help menu (saves copy and paste errors). 
+* `model/DomainNameModel.java` - an interface for the domain name model. We made use of internal classes such as DNRecord as an example on how to use jackson annotations, and to pass information around the program, and also a 'getInstance()` method to get the singleton instance of the model. We left in the other features of the interface that we implemented, so you can see our interface *BUT* once again, you are free to design your own.
+* `model/net/NetUtils.java` - Contains utilities for getting IP from hostname, and then getting the data from Ipapi.co API. You will probably want to use this file as is. To better understand this file, we have also included `test/TestNetUtils.java` which you can run to see how the file works, and edit to get a better idea of how NetUtils works. 
+* `formatters/Formats.java` - Enum for the different formats.
+* `formatters/DomainXMLWrapper.java` - If you use Jackson for XML, this class (or similar) is needed to get it formatted corrected
+* `formatters/DataFormatter.java` - A class we used to help us format the data based on the provided format. Assumes a collection of DNRecords. We provided the 'pretty print' option, so you didn't have to worry about spacing or spelling with the autograder. You do not have to use this file, but make sure you follow the example pretty print format provided. 
 
 
 
