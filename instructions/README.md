@@ -18,12 +18,18 @@
 > 100% bullet proof, and probably some typos, but you can get the idea
 > of how the final program works. If you go into the sample_working directory, you can run the program with the following command:
 > ```console
-> bin/bg_arena_planner
+> bin/DNInfo
 >    or if windows
-> bin\bg_arena_planner.bat
+> bin\DNInfo.bat
 > ```
 > Both commands will execute the .jar file in the lib directory while properly setting the path. For macOS and linux, 
-> you may need to add the execute permission to the file (`chmod +x bin/bg_arena_planner`). 
+> you may need to add the execute permission to the file (`chmod +x bin/DNInfo`).
+>
+> This program uses *extensive* command line arguments (in fact it is only a command line program). Use -h to see the help menu.
+> ```
+> bin/DNInfo -h  
+> ```
+
 
 
 ### :fire: Task 1: Design 
