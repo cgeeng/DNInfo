@@ -1,15 +1,10 @@
 package student.model.formatters;
 
-import java.io.IOException;
+
 import java.io.PrintStream;
 import java.io.OutputStream;
 import java.util.Collection;
 import javax.annotation.Nonnull;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.dataformat.csv.CsvMapper;
-import com.fasterxml.jackson.dataformat.csv.CsvSchema;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import student.model.DomainNameModel.DNRecord;
 
 /**
