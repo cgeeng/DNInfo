@@ -12,7 +12,7 @@ For this assignment, we will explore keeping our own file of domain names and th
 * "Serializing" and "Deserializing" data (converting data to a file format and back)
 * Using third party libraries to assist in serialization/deserialization (Jackson and/or Open CSV)
 * Exploring network connections in java and using them to connect to a server
-* Encapsulating data between components, making use of immutable and mutable structures were important
+* Encapsulating data between components, making use of immutable and mutable structures where important
 
 
 ## Instructions
