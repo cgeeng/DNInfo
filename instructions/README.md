@@ -107,7 +107,7 @@ When you are completed, you need to submit your code to gradescope. Go back to C
 2. Approaching (AG)
    * Passes the style check.  
 3. Meets (MG)
-  * README.md is filled out (name, github repo, etc) 
+   * README.md is filled out (name, github repo, etc) 
       * With out the link to your repo, the TAs won't grade the rest!
    * DesignDocument (INITIAL) sections are filled out 
    * All methods are tested with JUnit tests
