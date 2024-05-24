@@ -78,7 +78,7 @@ We have provided a number of files for you. You DO NOT have to use any of the fi
 * `model/net/NetUtils.java` - Contains utilities for getting IP from hostname, and then getting the data from Ipapi.co API. You will probably want to use this file as is. To better understand this file, we have also included `test/TestNetUtils.java` which you can run to see how the file works, and edit to get a better idea of how NetUtils works. 
 * `formatters/Formats.java` - Enum for the different formats.
 * `formatters/DomainXMLWrapper.java` - If you use Jackson for XML, this class (or similar) is needed to get it formatted corrected
-* `formatters/DataFormatter.java` - A class we used to help us format the data based on the provided format. Assumes a collection of DNRecords. We provided the 'pretty print' option, so you didn't have to worry about spacing or spelling with the autograder. You do not have to use this file, but make sure you follow the example pretty print format provided. 
+* `formatters/DataFormatter.java` - A class we used to help us format the data based on the provided format. Assumes a collection of DNRecords. We provided the 'pretty print' option, so you didn't have to worry about spacing or spelling with the autograder. You do not have to use this file, but make sure you follow the example pretty print format provided. You will want to look at `test/TestJacksonSerialize.java` to see how to use the Jackson library to serialize and deserialize data.
 
 
 
