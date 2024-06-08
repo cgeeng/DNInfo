@@ -139,7 +139,7 @@ Note: you often don't know all the tests as you write. As such, it is alright to
 
 
 > [!WARNING]
-> If you modify one of our files, you need to add tests for it. If you do not modify a provided file, you don't need to add tests. This can be done without modifying our provided code, but you are welcome to modify it (except for the caveat about IGameList and IPlanner) if it fits your overall design better. 
+> If you modify one of our files, you need to add tests for it. If you do not modify a provided file, you don't need to add tests. This can be done without modifying our provided code, but you are welcome to modify it if it fits your overall design better. 
  
 ### :fire: Task 3: Finish Design Document
 
