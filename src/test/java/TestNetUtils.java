@@ -9,6 +9,11 @@ import student.model.net.NetUtils;
  * Public tests for all methods in the NetUtils class.
  * 
  * Uses Junit Jupyter tests
+ * 
+ * NOTE: many of these tests will actually fail, as servers will switch depending on your local area
+ * (google for example keeps servers in denver to enable quicker access). As this is just the
+ * initial server location, it may vary based on where you are in the US. However, it should still
+ * give you an idea of how it is working!
  */
 public class TestNetUtils {
 

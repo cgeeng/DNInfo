@@ -81,7 +81,9 @@ public final class NetUtils {
             // con.setRequestProperty("Content-Type", "application/xml");
             con.setConnectTimeout(5000);
             con.setReadTimeout(5000);
-
+            con.setRequestProperty("User-Agent",
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                            + "(KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3");
             int status = con.getResponseCode();
             if (status == 200) {
                 return con.getInputStream();
