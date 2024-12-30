@@ -29,12 +29,12 @@ Automatically updating a local file based on information obtained online is very
 
 ### Display Formats
 
-For displaying the information to the client, you will have to display it based on different formats provided, namely, the data can be displayed in a pretty print format (provided), or in a CSV, JSON, or XML format. For the JSON format, you should use the [Jackson Library](https://github.com/FasterXML/jackson?tab=readme-ov-file) to serialize and deserialize the data. For CSV, you can use the [Open CSV](https://opencsv.sourceforge.net/) library, Jackson, or write it using standard java (none of the data has commas in it, so simple formatting is fine). For XML, you can use Jackson, or write it out using the built in java libraries. We have already included the updates to your build.gradle, so the libraries are included. If you are curious, they are in the dependencies section of the [build.gradle](../build.gradle) file.
+For displaying the information to the client, you will have to display it based on different formats provided, namely, the data can be displayed in a pretty print format (provided), or in a CSV, JSON, or XML format. For all three formats,  you should use the [Jackson Library](https://github.com/FasterXML/jackson?tab=readme-ov-file) to serialize and deserialize the data. We have already included the updates to your build.gradle, so the libraries are included. If you are curious, they are in the dependencies section of the [build.gradle](../build.gradle) file.
 
 In addition to displaying the data to the stdout, you will also need to be able to write the data to a provided file. 
 
 > [!NOTE]
-> What does serialize / deserialize mean? It is a fancy way of saying "convert to a file format" and "convert from a file format". This is a common term in software engineering, and you will see it often. The file format can often be a binary file, but in this case we are using human readable text file formats. Often it is used when the class fields are bound to specific data in the output, so they can be easily converted back and forth.  
+> What does serialize / deserialize mean? It is a fancy way of saying "convert to a file format" and "convert from a file format". This is a common term in software engineering, and you will see it often. The file format can be a binary file, but in this case we are using human readable text file formats. Often it is used when the class fields are bound to specific data in the output, so they can be easily converted back and forth.  
 
 
 ### Command Line Argument Options
@@ -83,6 +83,9 @@ We have provided a number of files for you. You DO NOT have to use any of the fi
 
 > [!CAUTION]
 > These are not all the files we used! Don't be fooled thinking it is complete. We had files to help us especially in the model including the main model file, along with a java bean for loading data from online and more. Really think about design, and if you want to even use what we provided, but no matter what you will be adding files!  This assignment is intentionally open for your design. We just wanted to give you a jump start on some of the tougher topics that involved working with other libraries and network connections.
+
+> [!WARNING]
+> The most common error we see is that you don't first check to see if the record already exists in your file. Please note, if the record already exists, you do not have to use NetUtils to grab the data! You only need NetUtils if the url given isn't already in the saved data. Due to IP addresses changing based on your location, the autograder only uses preexisting locations / fixed locations.
 
 ### :fire: Task 1: Design 
 
@@ -180,8 +183,8 @@ When you are completed, you need to submit your code to gradescope. Go back to C
    * Code is DRY (Don't Repeat Yourself)
       * Including making use of helping/utility classes to reduce duplication.
    * Student uses proper inheritance without duplication 
+   * Makes use of inheritance for print/file streams.
    * Methods include tests for edge cases in addition to happy path
-   * Proper use of sorts and sort strategy
    * Design document (FINAL) sections are filled out 
      * The notation needs to be correct, and the TAs will double check the final design
      matches the final implementation.
@@ -196,6 +199,12 @@ Legend:
 For manually graded elements, we only guarantee time to submit for a regrade IF you submit by the DUE DATE. Submitting late may mean it isn't possible for the MG to be graded before the AVAILABLE BY DATE, removing any windows for you to resubmit in time. While it will be graded, it is always best to submit by the due date, so you have full opportunity to improve your grade.
 
 If you need a reminder about the grading policy, please review the syllabus and the canvas page on 'formative/summative' grading. This class uses a unique grading system that will allow you to be flexible with due dates and multiple resubmissions (if you submit with time for TAs to give feedback), but we also ask that you continue to work on the assignment until you get a full grade.
+
+
+> [!CAUTION]
+> For this class, we give about a month for the **available until date**. This means you will 
+> only have a few manual resubmission attempts, and most everyone uses at least one! As such it is 
+> essential you submit on time!
 
 
 ### Autograder Limitation
